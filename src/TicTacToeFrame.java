@@ -30,12 +30,19 @@ public class TicTacToeFrame extends JFrame implements TicTacToeView{
 
             }
         }
+        this.setSize(200, 200);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
     @Override
     public void update(TicTacToeEvent e) {
         String label = e.isTurn()? "X" : "O";
         buttons[e.getX()][e.getY()].setText(label);
+
+        if(e.getStatus().ordinal() < 3){
+            JOptionPane.showMessageDialog(null,e.getStatus().toString()+"!");
+            System.exit(0);
+        }
     }
 
     public static void main(String[] args) {
